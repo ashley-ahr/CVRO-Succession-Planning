@@ -90,37 +90,48 @@
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-    <!-- HOME TAB -->
-    <section id="home-tab" class="tab-content">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">CVRO Succession Planning – Workshop Playbook</h1>
-        <p class="text-xl text-gray-600 mb-2">Build leadership continuity, readiness, and visibility.</p>
-        <p class="text-lg text-gray-500 mb-8">Xây dựng tính liên tục lãnh đạo, mức độ sẵn sàng và tính minh bạch.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <div class="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 bg-ashley-orange rounded-lg flex items-center justify-center mb-4"><span class="text-white text-xl">📊</span></div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Executive Overview</h3>
-          <p class="text-sm text-gray-500 mb-2">Tổng quan chương trình</p>
-          <p class="text-gray-600">Transparent · Fair · Development‑focused; readiness over title; evidence via SBI.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 bg-ashley-orange rounded-lg flex items-center justify-center mb-4"><span class="text-white text-xl">🛠️</span></div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Hands‑on Tools</h3>
-          <p class="text-sm text-gray-500 mb-2">Bộ công cụ thực hành</p>
-          <p class="text-gray-600">Templates, checklists, and sheets headers for end‑to‑end execution.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 bg-ashley-orange rounded-lg flex items-center justify-center mb-4"><span class="text-white text-xl">🎯</span></div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Step‑by‑step Workshops</h3>
-          <p class="text-sm text-gray-500 mb-2">Kịch bản workshop theo bước</p>
-        </div>
-      </div>
-      <div class="text-center flex flex-wrap gap-3 justify-center">
-        <button onclick="showTab('framework', event)" class="bg-white text-ashley-orange border-2 border-ashley-orange px-6 py-3 rounded-xl font-medium hover:bg-ashley-orange hover:text-white">📋Framework Navigator</button>
-        <button onclick="showTab('tools', event)" class="bg-white text-ashley-orange border-2 border-ashley-orange px-6 py-3 rounded-xl font-medium hover:bg-ashley-orange hover:text-white">📁 Management Hub</button>
-      </div>
-    </section>
+<!-- HOME TAB -->
+<section id="home-tab" class="tab-content">
+  <!-- ====== Header ====== -->
+  <div class="text-center mb-10">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      CVRO Succession Planning – Workshop Playbook
+    </h1>
+    <p class="text-lg text-gray-600 mb-2">
+      Build a future-ready talent pipeline by empowering employees, ensuring business continuity, and minimizing transition risks.
+    </p>
+  </div>
+
+  <!-- ====== Framework Overview ====== -->
+  <div class="text-center mb-10">
+    <h2 class="text-3xl font-bold text-ashley-orange mb-6">6 Key Steps Succession Planning Process</h2>
+    <img src="assets/overview.png" alt="2025 Framework Overview" class="mx-auto mb-6 max-w-5xl">
+    <p class="text-gray-700 max-w-3xl mx-auto">
+      The succession planning process is designed as a <strong>6-step framework</strong>, 
+      <u>continuously improved</u> each year to stay aligned with organizational needs 
+      and to optimize process effectiveness.
+    </p>
+  </div>
+
+  <!-- ====== Annual Succession Planning Circle ====== -->
+  <div class="text-center mt-16 mb-16">
+    <h2 class="text-3xl font-bold text-ashley-orange mb-6">Annual Succession Planning Cycle</h2>
+    <img src="assets/annual_circle.png" alt="Annual Succession Planning Cycle" class="mx-auto max-w-5xl">
+  </div>
+
+  <!-- ====== CTA Buttons ====== -->
+  <div class="text-center flex flex-wrap gap-3 justify-center">
+    <button onclick="showTab('framework', event)" 
+      class="bg-white text-ashley-orange border-2 border-ashley-orange px-6 py-3 rounded-xl font-medium hover:bg-ashley-orange hover:text-white transition">
+      📋 Framework Navigator
+    </button>
+    <button onclick="showTab('tools', event)" 
+      class="bg-white text-ashley-orange border-2 border-ashley-orange px-6 py-3 rounded-xl font-medium hover:bg-ashley-orange hover:text-white transition">
+      📁 Management Hub
+    </button>
+  </div>
+</section>
+
 
    
     <!-- FRAMEWORK TAB -->
