@@ -121,12 +121,100 @@ header .no-scrollbar {
   <h2 class="text-3xl font-bold text-ashley-orange mb-6">
     6 Key Stages in the Succession Planning Process
   </h2>
-  <img src="assets/overview.png" 
-       alt="2025 Framework Overview" 
-       class="mx-auto mb-6 w-[80%] h-auto">
-  <p class="text-gray-700 max-w-3xl mx-auto">
-    The succession planning process is designed as a <strong>6-step framework</strong>, 
-    <u>continuously improved</u> each year to stay aligned with organizational needs 
+
+  <!-- 3-column layout: Left steps – Image – Right steps -->
+  <div class="max-w-5xl mx-auto flex items-center justify-center gap-12 md:gap-16 mb-6">
+
+    <!-- LEFT SIDE: Step 1, 6, 5 (right aligned) -->
+    <div class="flex-1 flex flex-col justify-between h-56 text-right items-end">
+      <!-- STEP 1 -->
+      <button type="button"
+              onclick="goToFrameworkStep(1)"
+              class="group text-right">
+        <p class="font-semibold text-gray-900 group-hover:text-ashley-orange transition">
+          Step 1
+        </p>
+        <p class="text-gray-800 text-sm leading-snug">
+          Identify Critical Positions &amp;<br>
+          Success Profile
+        </p>
+      </button>
+
+      <!-- STEP 6 -->
+      <button type="button"
+              onclick="goToFrameworkStep(6)"
+              class="group text-right">
+        <p class="font-semibold text-gray-900 group-hover:text-ashley-orange transition">
+          Step 6
+        </p>
+        <p class="text-gray-800 text-sm leading-snug">
+          Continuous Review &amp;<br>
+          Yearly Talent Pool Refresh
+        </p>
+      </button>
+
+      <!-- STEP 5 -->
+      <button type="button"
+              onclick="goToFrameworkStep(5)"
+              class="group text-right">
+        <p class="font-semibold text-gray-900 group-hover:text-ashley-orange transition">
+          Step 5
+        </p>
+        <p class="text-gray-800 text-sm leading-snug">
+          Talent Review Presentation
+        </p>
+      </button>
+    </div>
+
+    <!-- CENTER: circle image -->
+    <div class="flex-shrink-0">
+      <img src="assets/circle.png"
+           alt="Succession 2025 Circle"
+           class="w-48 md:w-56 lg:w-60 h-auto mx-auto">
+    </div>
+
+    <!-- RIGHT SIDE: Step 2, 3, 4 (left aligned) -->
+    <div class="flex-1 flex flex-col justify-between h-56 text-left items-start">
+      <!-- STEP 2 -->
+      <button type="button"
+              onclick="goToFrameworkStep(2)"
+              class="group text-left">
+        <p class="font-semibold text-gray-900 group-hover:text-ashley-orange transition">
+          Step 2
+        </p>
+        <p class="text-gray-800 text-sm leading-snug">
+          Identify Talent Pool
+        </p>
+      </button>
+
+      <!-- STEP 3 -->
+      <button type="button"
+              onclick="goToFrameworkStep(3)"
+              class="group text-left">
+        <p class="font-semibold text-gray-900 group-hover:text-ashley-orange transition">
+          Step 3
+        </p>
+        <p class="text-gray-800 text-sm leading-snug">
+          Gap Assessment
+        </p>
+      </button>
+
+      <!-- STEP 4 -->
+      <button type="button"
+              onclick="goToFrameworkStep(4)"
+              class="group text-left">
+        <p class="font-semibold text-gray-900 group-hover:text-ashley-orange transition">
+          Step 4
+        </p>
+        <p class="text-gray-800 text-sm leading-snug">
+          IDP Execution – Closing the GAP
+        </p>
+      </button>
+    </div>
+  </div>
+  <p class="text-gray-700 max-w-3xl mx-auto mt-10">
+    The succession planning process is designed as a <strong>6-step framework</strong>,
+    <u>continuously improved</u> each year to stay aligned with organizational needs
     and to optimize process effectiveness.
   </p>
 </div>
@@ -4189,6 +4277,21 @@ let facilitatorMode = false;
       scope.querySelectorAll('.step-tab-btn').forEach(b=>{ b.classList.remove('border-ashley-orange','text-ashley-orange'); b.classList.add('border-transparent','text-gray-500'); });
       if(e){ e.target.classList.remove('border-transparent','text-gray-500'); e.target.classList.add('border-ashley-orange','text-ashley-orange'); }
     }
+
+
+  function goToFrameworkStep(stepNum) {
+    // Chỉ mở tab Framework
+    if (typeof showTab === "function") {
+      showTab('framework');
+    }
+
+    // Hiển thị đúng Stage
+    if (typeof showStep === "function") {
+      showStep(stepNum);
+    }
+
+    // Không scroll, không move viewport
+  }
 
     // ========== QR Board ==========
     function question(){ const m=document.getElementById('qrModal'); m.classList.remove('hidden'); m.classList.add('flex'); }
