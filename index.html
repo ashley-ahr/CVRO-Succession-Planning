@@ -1456,7 +1456,7 @@ if (btnEmail){
     <label class="block font-medium">Years of Experience Required</label>
     <p class="text-xs text-gray-500 mt-1">Minimum years of relevant experience.</p>
     <p class="mt-2 px-3 py-2 bg-white rounded border">
-      Minimum 5 years of relevant experience in Engineering, Lean, or Project Management within a furniture manufacturing environment.
+      At least 5 years of experience in Engineering, Lean, or project management; furniture manufacturing background required; leadership experience required.
     </p>
   </div>
 
@@ -1464,7 +1464,7 @@ if (btnEmail){
     <label class="block font-medium">Educational Background (if any)</label>
     <p class="text-xs text-gray-500 mt-1">Required degree(s) and field(s).</p>
     <p class="mt-2 px-3 py-2 bg-white rounded border">
-      Bachelor’s degree or above in Engineering, Industrial Management, or Lean Management.
+      College and above; major in Engineering, Lean, or Industrial Management.
     </p>
   </div>
 
@@ -1472,7 +1472,7 @@ if (btnEmail){
     <label class="block font-medium">Certifications (if any)</label>
     <p class="text-xs text-gray-500 mt-1">Any industry or function-related certifications required.</p>
     <p class="mt-2 px-3 py-2 bg-white rounded border">
-      Certifications in Lean Manufacturing, Project Management (e.g., PMP), or AutoCAD are preferred.
+      Not specified in JD.
     </p>
   </div>
 
@@ -1481,32 +1481,25 @@ if (btnEmail){
     <label class="block font-medium">Language/Communication Skills</label>
     <p class="text-xs text-gray-500 mt-1">Requirements for English level, reporting ability, or customer-facing communication.</p>
     <p class="mt-2 px-3 py-2 bg-white rounded border">
-      Effective English communication (verbal and written); strong coordination and presentation skills when working with vendors and cross-functional teams.
-    </p>
+	Effective English communication skills.
+	</p>
   </div>
   
   
   <div class="flex flex-col">
     <label class="block font-medium">Functional/Technical Knowledge</label>
     <p class="text-xs text-gray-500 mt-1">Systems, tools, or processes required.</p>
-    <ul class="mt-2 px-3 py-2 bg-white rounded border list-disc list-inside space-y-1">
-      <li>Deep understanding of furniture materials, construction, and finishing.</li>
-      <li>Familiarity with NEWGO process and Pre-Production Review (PPR) requirements.</li>
-      <li>Ability to read and validate engineering drawings and documents (AIS, CTN, RPDF).</li>
-      <li>Proficiency in AutoCAD and Microsoft Office tools.</li>
-      <li>Knowledge of Ashley systems (Direct System, SKU, CLS, ECO) is an advantage.</li>
-    </ul>
+    <p class="mt-2 px-3 py-2 bg-white rounded border">
+	NEWGO process; PPR reviews; drawings evaluation; AIS, CTN, RPDF review; vendor communication; PPR tracking; quality/process projects; AutoCAD; MS Office.
+    </p>
   </div>
 
   <div class="flex flex-col">
     <label class="block font-medium">Other Role-Specific Requirements</label>
     <p class="text-xs text-gray-500 mt-1">Include availability to travel, shift flexibility, domain knowledge, etc.</p>
-    <ul class="mt-2 px-3 py-2 bg-white rounded border list-disc list-inside space-y-1">
-      <li>Proven leadership capability and team supervision experience.</li>
-      <li>Strong attention to detail, problem-solving, and time management.</li>
-      <li>Ability to manage multiple tasks in a fast-paced manufacturing setting.</li>
-      <li>Demonstrates ownership in driving quality and process improvement initiatives.</li>
-    </ul>
+    <p class="mt-2 px-3 py-2 bg-white rounded border">
+	Work under high demands; manage multiple tasks; empathy; factory environment; lifting up to 50 lbs; bending/stooping; exposure to dirt, dust, chemicals, and noise.
+    </p>
   </div>
 </div>
 
@@ -1518,6 +1511,48 @@ if (btnEmail){
       </p>
     </div>
   </section>
+<!-- ===== Success Profile Folder Section (2-column layout) ===== -->
+<div class="mt-6 mb-6 grid md:grid-cols-2 gap-6 items-center">
+
+  <!-- Left: Title + Description -->
+  <div class="text-left space-y-1">
+    <h4 class="font-semibold text-gray-900 text-sm">
+      Success Profile – Department Templates (2025)
+    </h4>
+    <p class="text-xs text-gray-600">
+      Success Profile templates for prioritized roles in Part A — to be reviewed by HoDs as guided in the Success Profile tab.
+      The link will be unlocked during the workshop on November 18.
+    </p>
+  </div>
+
+  <!-- Right: Button + Badge -->
+  <div id="folderWrap" class="flex items-center gap-3 justify-start md:justify-end">
+    
+    <!-- 🔒 Locked by default -->
+    <a id="btnFolderLink"
+       data-link-id="stage1B"
+       href="#"
+       target="_blank"
+       class="inline-flex items-center gap-2
+              bg-white text-[#F68C2C] border border-[#F68C2C]
+              hover:bg-orange-50
+              px-4 py-2 rounded-lg text-sm font-medium transition
+              pointer-events-none opacity-60">
+       📁 Success Profile Folder
+    </a>
+
+    <!-- Badge -->
+    <span id="folderBadge"
+          class="text-xs font-medium
+                 text-[#C25A00] bg-[#FFF3E6]
+                 border border-[#F68C2C]/30
+                 px-3 py-1 rounded-full inline-flex items-center gap-1">
+      ⏳ Opens soon
+    </span>
+  </div>
+
+</div>
+
 </div>
 
 <!-- ===== Watermark CSS (KEEP) ===== -->
@@ -1543,10 +1578,42 @@ if (btnEmail){
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const ex = [...document.querySelectorAll('#s1-profile-tab span')].find(s => s.textContent.trim().toUpperCase()==='EXAMPLE');
-    if (ex) ex.classList.add('ring-2','ring-ashley-orange','animate-pulse');
+
+    const unlockAtFolder = new Date('2024-11-18T00:00:00+07:00').getTime(); giờ mở folder
+    const folderBtn   = document.getElementById('btnFolderLink');
+    const folderBadge = document.getElementById('folderBadge');
+
+    function updateFolderState() {
+      if (!folderBtn) return;
+      const now = Date.now();
+
+      if (now >= unlockAtFolder) {
+        // ======= UNLOCKED STYLE (cam đậm giống Stage 2) =======
+        folderBtn.classList.remove(
+          'bg-white','text-[#F68C2C]','border','border-[#F68C2C]',
+          'hover:bg-orange-50','pointer-events-none','opacity-60'
+        );
+        folderBtn.classList.add(
+          'bg-[#F68C2C]','hover:bg-[#E67A1A]','text-white','shadow-sm'
+        );
+
+        if (folderBadge) folderBadge.style.display = 'none';
+
+      } else {
+        // ======= LOCKED STYLE =======
+        folderBtn.classList.add('pointer-events-none','opacity-60');
+        if (folderBadge) {
+          folderBadge.textContent = '⏳ Opens soon';
+          folderBadge.style.display = 'inline-flex';
+        }
+      }
+    }
+
+    updateFolderState();
+    setInterval(updateFolderState, 60000);
   });
 </script>
+
 </div>
 </div>
 <!-- STAGE 2 – Identify Talent Pool (Collapsible style, 3 colorful rounds) -->
@@ -2293,7 +2360,7 @@ function clearCards(){
   });
 
   /* ===== How-to Video timer (enable button on/after unlockAt) ===== */
-  const unlockAt = new Date('2026-01-21T00:00:00+07:00').getTime();//giờ video
+  const unlockAt = new Date('2025-01-21T00:00:00+07:00').getTime();//giờ video
   const videoBtn = document.getElementById('btnHowToVideo');
   const videoBadge = document.getElementById('videoBadge');
 
