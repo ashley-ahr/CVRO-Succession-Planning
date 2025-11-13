@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=1280, user-scalable=yes" />
     <style>
     /* Luôn giữ thanh cuộn dọc trên toàn trang */
     html {
@@ -12,8 +12,12 @@
 
     /* Đảm bảo body luôn chiếm đủ chiều cao */
     body {
-      min-height: 100vh;
-    }
+      min-height: 100vh;}
+	/* WebKit scrollbar styling (Chrome/Edge/Safari/Android) */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,.25); border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+
   </style>
   <title>CVRO Succession Planning - Workshop Playbook</title>
   <!-- PNG fallback -->
@@ -35,6 +39,15 @@
     body{box-sizing:border-box}
     .fade-in{animation:fadeIn .25s ease-in}
     @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+	/* Ẩn thanh cuộn ngang riêng cho phần header (vẫn có thể cuộn bằng ngón tay) */
+header .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+header .no-scrollbar {
+  -ms-overflow-style: none; /* cho IE và Edge cũ */
+  scrollbar-width: none;    /* cho Firefox */
+}
+
   </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -43,7 +56,8 @@
 <!-- Header -->
 <header class="bg-white shadow-sm border-b sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-wrap justify-center items-center h-16 gap-x-4 gap-y-2 text-center">
+<div class="flex flex-nowrap justify-center items-center gap-4 h-16 overflow-x-auto whitespace-nowrap text-center no-scrollbar">
+
 
       <!-- Logo -->
       <div class="flex-shrink-0">
@@ -109,7 +123,7 @@
   </h2>
   <img src="assets/overview.png" 
        alt="2025 Framework Overview" 
-       class="mx-auto mb-6 w-[80%] h-auto rounded-lg shadow-sm">
+       class="mx-auto mb-6 w-[80%] h-auto">
   <p class="text-gray-700 max-w-3xl mx-auto">
     The succession planning process is designed as a <strong>6-step framework</strong>, 
     <u>continuously improved</u> each year to stay aligned with organizational needs 
@@ -124,7 +138,7 @@
   </h2>
   <img src="assets/annual_circle.png" 
        alt="Annual Succession Planning Cycle" 
-       class="mx-auto w-[80%] h-auto rounded-lg shadow-sm">
+       class="mx-auto w-[80%] h-auto">
 </div>
 
 
@@ -214,7 +228,7 @@
       <div class="px-5 pb-4 pt-1 text-sm text-gray-800">
         <p class="mb-2">
     HoDs assess positions within their departments to identify which are <span class="font-medium">business-critical</span> for succession planning.  
-    Each role is rated based on <span class="font-medium">five equally weighted criteria</span> (20% each):
+    Each role is rated based on <span class="font-medium">five equally weighted criteria</span>:
   </p>
    <ul class="list-disc pl-5 space-y-1">
     <li>Succession Urgency & Internal Readiness</li>
@@ -1217,104 +1231,115 @@ if (btnEmail){
       <h3 class="text-ashley-orange font-extrabold text-lg">Section 1: Competency Requirements</h3>
     </div>
 
-    <div class="overflow-x-auto">
-      <table class="min-w-[1100px] w-full text-sm">
-        <thead class="bg-gray-50">
-          <tr class="text-gray-800">
-            <th class="px-3 py-3 text-left w-20">Areas</th>
-            <th class="px-3 py-3 text-left w-12">No.</th>
-            <th class="px-3 py-3 text-left w-20">Competency Name</th>
-            <th class="px-3 py-3 text-left w-50">Competency Description</th>
-            <th class="px-3 py-3 text-left w-30">Evaluation Item (Job Skills)</th>
-            <th class="px-3 py-3 text-left w-[22rem]">Item Description</th>
-          </tr>
-        </thead>
+	<div class="overflow-x-auto max-w-[100vw]">
+	  <table class="min-w-[1100px] w-auto text-sm">
 
-        <tbody class="align-top">
-          <!-- ===== Business/Management Skills (3) ===== -->
-          <tr>
-            <td class="border-t px-3 py-2 font-medium area-cell" rowspan="3">Business/Management Skills</td>
-            <td class="border-t px-3 py-2">1</td>
-            <td class="border-t px-3 py-2">Business Knowledge</td>
-            <td class="border-t px-3 py-2">Understands business drivers; evaluates proposals; spots data gaps that need deeper analysis.</td>
-            <td class="border-t px-3 py-2">Analyze a proposal</td>
-            <td class="border-t px-3 py-2">Review a real case and identify key levers, risks, and assumptions.</td>
-          </tr>
-          <tr>
-            <td class="border-t px-3 py-2">2</td>
-            <td class="border-t px-3 py-2">Customer Orientation</td>
-            <td class="border-t px-3 py-2">Discovers and meets customer needs; balances cost, quality, time for win-win outcomes.</td>
-            <td class="border-t px-3 py-2">Customer scenario</td>
-            <td class="border-t px-3 py-2">Role-play handling a priority conflict while maintaining SLA.</td>
-          </tr>
-          <tr>
-            <td class="border-t px-3 py-2">3</td>
-            <td class="border-t px-3 py-2">Operational Excellence</td>
-            <td class="border-t px-3 py-2">Applies best practices; drives continuous improvement to efficiency and quality.</td>
-            <td class="border-t px-3 py-2">Kaizen mini-case</td>
-            <td class="border-t px-3 py-2">Map a process, propose waste reduction and measurable KPIs.</td>
-          </tr>
+<div class="overflow-x-auto max-w-[100vw]">
+<div class="overflow-x-auto">
+  <table class="w-full text-sm table-auto">
+    <thead class="bg-gray-50">
+      <tr class="text-gray-800">
+        <th class="px-3 py-3 text-left w-[15%]">Areas</th>
+        <th class="px-3 py-3 text-center w-[5%]">No.</th>
+        <th class="px-3 py-3 text-left w-[15]">Competency Name</th>
+        <th class="px-3 py-3 text-left w-[65%]">Competency Description</th>
+      </tr>
+    </thead>
 
-          <!-- ===== Interpersonal Effectiveness (3) ===== -->
-          <tr>
-            <td class="border-t px-3 py-2 font-medium area-cell" rowspan="3">Interpersonal Effectiveness</td>
-            <td class="border-t px-3 py-2">1</td>
-            <td class="border-t px-3 py-2">Stakeholder Communication</td>
-            <td class="border-t px-3 py-2">Communicates clearly and on time; tailors messages to audience; aligns expectations.</td>
-            <td class="border-t px-3 py-2">Executive update</td>
-            <td class="border-t px-3 py-2">Deliver a 3-slide status with risk/mitigation; assess clarity & influence.</td>
-          </tr>
-          <tr>
-            <td class="border-t px-3 py-2">2</td>
-            <td class="border-t px-3 py-2">Conflict Resolution</td>
-            <td class="border-t px-3 py-2">Addresses disagreement constructively; seeks common ground and commitments.</td>
-            <td class="border-t px-3 py-2">Mediation role-play</td>
-            <td class="border-t px-3 py-2">Facilitate two parties to an agreed next step and timeline.</td>
-          </tr>
-          <tr>
-            <td class="border-t px-3 py-2">3</td>
-            <td class="border-t px-3 py-2">Cross-functional Collaboration</td>
-            <td class="border-t px-3 py-2">Builds trust with other teams; shares context; co-creates solutions.</td>
-            <td class="border-t px-3 py-2">Joint planning</td>
-            <td class="border-t px-3 py-2">Draft a RACI &amp; sprint plan with another function; evaluate feasibility.</td>
-          </tr>
 
-          <!-- ===== Personal Attributes (2) ===== -->
-          <tr>
-            <td class="border-t px-3 py-2 font-medium area-cell" rowspan="2">Personal Attributes</td>
-            <td class="border-t px-3 py-2">1</td>
-            <td class="border-t px-3 py-2">Ownership &amp; Accountability</td>
-            <td class="border-t px-3 py-2">Takes responsibility; follows through; learns from mistakes and prevents recurrence.</td>
-            <td class="border-t px-3 py-2">Post-mortem review</td>
-            <td class="border-t px-3 py-2">Write an RCA (5-Whys) and prevention actions with owners/due dates.</td>
-          </tr>
-          <tr>
-            <td class="border-t px-3 py-2">2</td>
-            <td class="border-t px-3 py-2">Resilience</td>
-            <td class="border-t px-3 py-2">Stays composed under pressure; adapts priorities; maintains performance.</td>
-            <td class="border-t px-3 py-2">Stress scenario</td>
-            <td class="border-t px-3 py-2">Plan workload re-prioritization and stakeholder comms for a sudden change.</td>
-          </tr>
+    <tbody class="align-top">
+<tbody class="align-top">
+  <!-- ===== Business/ Management Skills ===== -->
+  <tr>
+    <td class="border-t px-3 py-2 font-medium area-cell align-middle" rowspan="4">Business/ Management Skills</td>
+    <td class="border-t px-3 py-2 text-center align-middle">1</td>
+    <td class="border-t px-3 py-2 align-middle">Business Knowledge</td>
+    <td class="border-t px-3 py-2">Demonstrates a keen understanding of basic business operations and the organizational levers (systems, processes, departments, functions) that drive profitable growth, draws from personal experience to quickly evaluate business plans and processes to identify data or recommendations that need further investigation.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">2</td>
+    <td class="border-t px-3 py-2 align-middle">Customer Focus</td>
+    <td class="border-t px-3 py-2">Ensuring that the internal or external customer’s perspective is a driving force behind strategic priorities, business decisions, organizational processes, and individual activities, crafting and implementing service practices that meet customers’ and own organization’s needs, promoting and operationalizing customer service as a value.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">3</td>
+    <td class="border-t px-3 py-2 align-middle">Decision Making</td>
+    <td class="border-t px-3 py-2">Identifying and understanding problems and opportunities by gathering, analyzing, and interpreting quantitative and qualitative information, choosing the best course of action by establishing clear decision criteria, generating and evaluating alternatives, and making timely decisions, taking action that is consistent with available facts and constraints and optimizes probable consequences.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">4</td>
+    <td class="border-t px-3 py-2 align-middle">Operational Excellence</td>
+    <td class="border-t px-3 py-2">The systematic approach and integrated management philosophy that enhances the efficiency, quality, and effectiveness of the company's operations.</td>
+  </tr>
 
-          <!-- ===== Leadership Impact (2) ===== -->
-          <tr>
-            <td class="border-t px-3 py-2 font-medium area-cell" rowspan="2">Leadership Impact</td>
-            <td class="border-t px-3 py-2">1</td>
-            <td class="border-t px-3 py-2">Team Leadership</td>
-            <td class="border-t px-3 py-2">Sets direction; coaches performance; builds an inclusive, high-standards culture.</td>
-            <td class="border-t px-3 py-2">Coaching plan</td>
-            <td class="border-t px-3 py-2">Create a 90-day plan: goals, feedback rhythm, growth actions.</td>
-          </tr>
-          <tr>
-            <td class="border-t px-3 py-2">2</td>
-            <td class="border-t px-3 py-2">Strategic Thinking</td>
-            <td class="border-t px-3 py-2">Connects initiatives to business strategy; anticipates risks and opportunities.</td>
-            <td class="border-t px-3 py-2">Strategy brief</td>
-            <td class="border-t px-3 py-2">Draft OKRs aligned to company priorities; outline risk mitigations.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <!-- ===== Interpersonal Effectiveness ===== -->
+  <tr>
+    <td class="border-t px-3 py-2 font-medium area-cell align-middle" rowspan="3">Interpersonal Effectiveness</td>
+    <td class="border-t px-3 py-2 text-center align-middle">5</td>
+    <td class="border-t px-3 py-2 align-middle">Communication</td>
+    <td class="border-t px-3 py-2">Conveying information and ideas clearly and concisely to individuals or groups in an engaging manner that helps them understand and retain the message, listening actively to others.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">6</td>
+    <td class="border-t px-3 py-2 align-middle">Emotional Intelligence Essentials</td>
+    <td class="border-t px-3 py-2">Establishing and sustaining trusting relationships by accurately perceiving and interpreting own and others’ emotions and behavior, leveraging insights to effectively manage own responses so that one’s behavior matches one’s values and delivers intended results.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">7</td>
+    <td class="border-t px-3 py-2 align-middle">Cross-team Collaboration</td>
+    <td class="border-t px-3 py-2">The ability to effectively work across diverse teams, departments, and geographical locations to achieve common goals.</td>
+  </tr>
+
+  <!-- ===== Personal Attributes ===== -->
+  <tr>
+    <td class="border-t px-3 py-2 font-medium area-cell align-middle" rowspan="3">Personal Attributes</td>
+    <td class="border-t px-3 py-2 text-center align-middle">8</td>
+    <td class="border-t px-3 py-2 align-middle">Personal Courage</td>
+    <td class="border-t px-3 py-2">Proactively confronting difficult issues, making valiant choices and taking bold action in the face of opposition or fear.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">9</td>
+    <td class="border-t px-3 py-2 align-middle">Positive Approach</td>
+    <td class="border-t px-3 py-2">Demonstrating a positive attitude in the face of difficult or challenging situations, providing an uplifting (yet realistic) outlook on what the future holds and the opportunities it might present.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">10</td>
+    <td class="border-t px-3 py-2 align-middle">Adaptability</td>
+    <td class="border-t px-3 py-2">Maintaining effectiveness when experiencing major changes in work responsibilities or environment (e.g., people, processes, structure, or culture), adjusting effectively to change by exploring the benefits, trying new approaches, and collaborating with others to make the change successful.</td>
+  </tr>
+
+  <!-- ===== Leadership Impact ===== -->
+  <tr>
+    <td class="border-t px-3 py-2 font-medium area-cell align-middle" rowspan="5">Leadership Impact</td>
+    <td class="border-t px-3 py-2 text-center align-middle">11</td>
+    <td class="border-t px-3 py-2 align-middle">Coaching and Developing Others</td>
+    <td class="border-t px-3 py-2">Providing feedback, instruction, and development guidance to help others excel in their current or future job responsibilities, planning and supporting the development of individual skills and abilities.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">12</td>
+    <td class="border-t px-3 py-2 align-middle">Driving Innovation</td>
+    <td class="border-t px-3 py-2">Creating an environment (culture) that inspires people to generate novel solutions with measurable value for existing and potential customers (internal or external), encouraging experimentation with new ways to solve work problems and seize opportunities that result in unique and differentiated solutions.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">13</td>
+    <td class="border-t px-3 py-2 align-middle">Driving for Results</td>
+    <td class="border-t px-3 py-2">Setting high goals for personal and group accomplishment, using measurement methods to monitor progress toward goals, tenaciously working to meet or exceed goals while deriving satisfaction from that achievement and continuous improvement.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">14</td>
+    <td class="border-t px-3 py-2 align-middle">Facilitating Change</td>
+    <td class="border-t px-3 py-2">Encouraging others to implement better approaches to address problems and opportunities, leading the implementation and acceptance of change within the workplace.</td>
+  </tr>
+  <tr>
+    <td class="border-t px-3 py-2 text-center align-middle">15</td>
+    <td class="border-t px-3 py-2 align-middle">Delegation and Empowerment</td>
+    <td class="border-t px-3 py-2">Identifying and leveraging opportunities to accelerate results and build capability by assigning tasks and decision-making responsibilities to individuals or teams with clear boundaries, expectations, support, and follow-up.</td>
+  </tr>
+</tbody>
+
+    </tbody>
+  </table>
+</div>
 
     <!-- Conclusion note -->
     <div class="px-5 py-4 border-t-2 border-gray-200 bg-yellow-50 rounded-b-xl">
@@ -1325,49 +1350,78 @@ if (btnEmail){
     </div>
   </section>
 
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-6">
+      <div class="flex items-center gap-2">
+        <span class="bg-ashley-orange text-white px-2 py-1 rounded text-xs font-bold">EXAMPLE</span>
+        <span class="text-yellow-800 font-medium">The content below is an example extracted from the Job Description of the position Team Leader of Product Engineering.</span>
+      </div>
+    </div>
+
   <!-- ================== Section 2 (STATIC) ================== -->
   <section id="sec-qualifications" class="border-2 border-gray-300 rounded-xl bg-white mt-6 example-watermark">
     <div class="px-5 py-4 border-b-2 border-gray-200">
       <h3 class="text-blue-700 font-extrabold text-lg">Section 2: Job Qualifications</h3>
     </div>
 
-    <div class="p-5 grid md:grid-cols-2 gap-6 text-sm">
-      <div>
-        <label class="block font-medium">Years of Experience Required</label>
-        <p class="text-xs text-gray-500 mt-1">Minimum years of relevant experience.</p>
-        <p class="mt-2 px-3 py-2 bg-white rounded border">7–10 years of progressive HR experience, including at least 3 years in a supervisory role</p>
-      </div>
+<div class="p-5 grid md:grid-cols-2 gap-6 text-sm">
+  <div class="flex flex-col">
+    <label class="block font-medium">Years of Experience Required</label>
+    <p class="text-xs text-gray-500 mt-1">Minimum years of relevant experience.</p>
+    <p class="mt-2 px-3 py-2 bg-white rounded border">
+      Minimum 5 years of relevant experience in Engineering, Lean, or Project Management within a furniture manufacturing environment.
+    </p>
+  </div>
 
-      <div>
-        <label class="block font-medium">Educational Background (if any)</label>
-        <p class="text-xs text-gray-500 mt-1">Required degree(s) and field(s).</p>
-        <p class="mt-2 px-3 py-2 bg-white rounded border">Bachelor’s degree in Human Resources, Business Administration, or related field; MBA preferred.</p>
-      </div>
+  <div class="flex flex-col">
+    <label class="block font-medium">Educational Background (if any)</label>
+    <p class="text-xs text-gray-500 mt-1">Required degree(s) and field(s).</p>
+    <p class="mt-2 px-3 py-2 bg-white rounded border">
+      Bachelor’s degree or above in Engineering, Industrial Management, or Lean Management.
+    </p>
+  </div>
 
-      <div>
-        <label class="block font-medium">Certifications (if any)</label>
-        <p class="text-xs text-gray-500 mt-1">Any industry or function-related certifications required.</p>
-        <p class="mt-2 px-3 py-2 bg-white rounded border">SHRM-CP/SHRM-SCP, CIPD Level 5/7, or equivalent HR certification preferred.</p>
-      </div>
+  <div class="flex flex-col">
+    <label class="block font-medium">Certifications (if any)</label>
+    <p class="text-xs text-gray-500 mt-1">Any industry or function-related certifications required.</p>
+    <p class="mt-2 px-3 py-2 bg-white rounded border">
+      Certifications in Lean Manufacturing, Project Management (e.g., PMP), or AutoCAD are preferred.
+    </p>
+  </div>
 
-      <div>
-        <label class="block font-medium">Functional/Technical Knowledge</label>
-        <p class="text-xs text-gray-500 mt-1">Systems, tools, or processes required.</p>
-        <p class="mt-2 px-3 py-2 bg-white rounded border">Knowledge of HRIS systems (SAP SuccessFactors, Workday), labor law compliance, performance management processes, and talent development frameworks.</p>
-      </div>
 
-      <div>
-        <label class="block font-medium">Language/Communication Skills</label>
-        <p class="text-xs text-gray-500 mt-1">Requirements for English level, reporting ability, or customer-facing communication.</p>
-        <p class="mt-2 px-3 py-2 bg-white rounded border">Fluent in English and Vietnamese – strong presentation, reporting, and cross-cultural communication skills.</p>
-      </div>
+  <div class="flex flex-col">
+    <label class="block font-medium">Language/Communication Skills</label>
+    <p class="text-xs text-gray-500 mt-1">Requirements for English level, reporting ability, or customer-facing communication.</p>
+    <p class="mt-2 px-3 py-2 bg-white rounded border">
+      Effective English communication (verbal and written); strong coordination and presentation skills when working with vendors and cross-functional teams.
+    </p>
+  </div>
+  
+  
+  <div class="flex flex-col">
+    <label class="block font-medium">Functional/Technical Knowledge</label>
+    <p class="text-xs text-gray-500 mt-1">Systems, tools, or processes required.</p>
+    <ul class="mt-2 px-3 py-2 bg-white rounded border list-disc list-inside space-y-1">
+      <li>Deep understanding of furniture materials, construction, and finishing.</li>
+      <li>Familiarity with NEWGO process and Pre-Production Review (PPR) requirements.</li>
+      <li>Ability to read and validate engineering drawings and documents (AIS, CTN, RPDF).</li>
+      <li>Proficiency in AutoCAD and Microsoft Office tools.</li>
+      <li>Knowledge of Ashley systems (Direct System, SKU, CLS, ECO) is an advantage.</li>
+    </ul>
+  </div>
 
-      <div>
-        <label class="block font-medium">Other Role-Specific Requirements</label>
-        <p class="text-xs text-gray-500 mt-1">Include availability to travel, shift flexibility, domain knowledge, etc.</p>
-        <p class="mt-2 px-3 py-2 bg-white rounded border">Ability to travel across Asia sites, strong stakeholder management, experience in multicultural environment.</p>
-      </div>
-    </div>
+  <div class="flex flex-col">
+    <label class="block font-medium">Other Role-Specific Requirements</label>
+    <p class="text-xs text-gray-500 mt-1">Include availability to travel, shift flexibility, domain knowledge, etc.</p>
+    <ul class="mt-2 px-3 py-2 bg-white rounded border list-disc list-inside space-y-1">
+      <li>Proven leadership capability and team supervision experience.</li>
+      <li>Strong attention to detail, problem-solving, and time management.</li>
+      <li>Ability to manage multiple tasks in a fast-paced manufacturing setting.</li>
+      <li>Demonstrates ownership in driving quality and process improvement initiatives.</li>
+    </ul>
+  </div>
+</div>
+
 
     <div class="px-5 py-4 border-t-2 border-gray-200 bg-yellow-50 rounded-b-xl">
       <p class="text-sm text-gray-800">
@@ -2930,20 +2984,68 @@ function clearCards(){
 
 <details class="group rounded-r-lg mb-4 bg-green-50 border-l-4 border-green-500">
   <summary class="flex items-center justify-between cursor-pointer select-none px-5 py-3">
-    <span class="font-semibold text-green-700 text-base flex items-center gap-2">🏕️ Bootcamp Program Planning & Execution</span>
-    <svg class="h-5 w-5 text-green-600 transition-transform duration-200 ease-out group-open:rotate-90">
+    <span class="font-semibold text-green-700 text-base flex items-center gap-2">
+      🏕️ CVRO Talent NextGen Bootcamp
+    </span>
+    <svg class="h-5 w-5 text-green-600 transition-transform duration-200 ease-out group-open:rotate-90" viewBox="0 0 20 20" aria-hidden="true">
       <path fill="currentColor" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.12l3.71-2.89a.75.75 0 1 1 1.04 1.08l-4.24 3.31a.75.75 0 0 1-.93 0L5.21 8.31a.75.75 0 0 1 .02-1.1z"/>
     </svg>
   </summary>
-  <div class="px-5 pb-4 pt-1 text-sm text-gray-900">
-    <ol class="list-decimal pl-6 space-y-1">
-      <li><strong>Analyze gaps</strong> — review the annual Gap Analysis Summary Report to identify shared development needs across successors.</li>
-      <li><strong>Design program</strong> — AHR builds a structured, multi-day bootcamp focusing on top recurring skill and competency gaps.</li>
-      <li><strong class="text-ashley-orange">Deliver sessions</strong> — combine hands-on workshops, mentoring circles, and experiential learning activities.</li>
-      <li><strong>Evaluate impact</strong> — collect feedback from participants and HoDs to refine next year’s bootcamp and learning focus.</li>
-    </ol>
+
+  <div class="px-5 pb-4 pt-1 text-sm text-gray-900 leading-relaxed">
+    <!-- Badge 70–20–10 (nổi bật nhưng vẫn “xanh”) -->
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class="inline-flex items-center gap-1 text-[12px] px-3 py-1 rounded-full border bg-white/70 border-emerald-300 text-emerald-800 font-semibold shadow-[0_0_0_2px_rgba(16,185,129,0.08)]">
+        70% · Experiential
+      </span>
+      <span class="inline-flex items-center gap-1 text-[12px] px-3 py-1 rounded-full border bg-white/60 border-sky-300 text-sky-900 font-semibold shadow-[0_0_0_2px_rgba(2,132,199,0.08)]">
+        20% · Social
+      </span>
+      <span class="inline-flex items-center gap-1 text-[12px] px-3 py-1 rounded-full border bg-white/60 border-amber-300 text-amber-900 font-semibold shadow-[0_0_0_2px_rgba(245,158,11,0.10)]">
+        10% · Formal
+      </span>
+    </div>
+
+    <!-- Intro ngắn gọn, lôi cuốn -->
+    <p class="mb-4 text-gray-800">
+      A high-energy, multi-day journey blending <strong>case-based simulations</strong>, <strong>peer-learning circles</strong>, and <strong>expert mini-workshops</strong>—built on the 70–20–10 model to accelerate leadership, collaboration, and strategic thinking while boosting visibility with management.
+    </p>
+
+
+<!-- Benefit cards (centered, color-coded titles, top aligned) -->
+<div class="grid sm:grid-cols-3 gap-4 mb-4 text-center justify-items-center items-start">
+  <!-- Impact -->
+  <div class="w-full rounded-lg border border-gray-200 bg-white/80 p-4 flex flex-col h-full">
+    <p class="text-[13px] font-bold text-emerald-600 mb-2 uppercase tracking-wide">Impact</p>
+    <p class="text-gray-800 text-sm leading-relaxed">
+      Real business challenges turn learning into <strong>practical readiness</strong> and influence beyond authority.
+    </p>
+  </div>
+
+  <!-- Visibility -->
+  <div class="w-full rounded-lg border border-gray-200 bg-white/80 p-4 flex flex-col h-full">
+    <p class="text-[13px] font-bold text-sky-600 mb-2 uppercase tracking-wide">Visibility</p>
+    <p class="text-gray-800 text-sm leading-relaxed">
+      Pitch to management, gain <strong>confidence & recognition</strong> through direct feedback.
+    </p>
+  </div>
+
+  <!-- IDP & Talent Review -->
+  <div class="w-full rounded-lg border border-gray-200 bg-white/80 p-4 flex flex-col h-full">
+    <p class="text-[13px] font-bold text-amber-600 mb-2 uppercase tracking-wide">IDP & Talent Review</p>
+    <p class="text-gray-800 text-sm leading-relaxed">
+Equips successors with essential presentation skills to excel in the <strong>Talent Review Event (Stage 5)</strong> and showcase their growth. </p>
+  </div>
+</div>
+
+
+    <!-- Nội dung cốt lõi cô đọng -->
+    <p class="mb-1 text-gray-800">
+      Focused on closing <strong>common gaps</strong> from the Gap Analysis Summary, the Bootcamp translates learning into <strong>actionable outcomes</strong>—with AHR & HoDs guiding mentoring, project assignments, and exposure opportunities across the year.
+    </p>
   </div>
 </details>
+
 
 
 
@@ -3750,93 +3852,117 @@ function s4SetActiveStep(step){
     </div>
   </div>
 
-  <!-- ====== FAQ (moved into this tab) ====== -->
-  <div class="mb-8">
-    <h2 class="text-2xl font-bold text-gray-900 mb-2">FAQ – HoD Responsibilities in Succession Planning</h2>
-    <p class="text-gray-600 mb-6">Frequently asked questions to help Heads of Department understand their key actions across each stage.</p>
+<!-- ====== FAQ – HoD Responsibilities ====== -->
+<div class="mb-10">
+  <h2 class="text-2xl font-bold text-gray-900 mb-2">FAQ – HoD Responsibilities in Succession Planning</h2>
+  <p class="text-gray-600 mb-6">Frequently asked questions to help Heads of Department understand their key actions across each stage.</p>
 
-    <div class="space-y-4 mb-10">
-      <div class="bg-white rounded-xl border">
-        <button onclick="toggleAccordion('faq-1', event)" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
-          <h4 class="font-semibold text-gray-900">Q1. What am I expected to do regarding identifying critical roles (Stage 1)?</h4>
-          <span class="accordion-icon text-ashley-orange">▼</span>
-        </button>
-        <div id="faq-1" class="accordion-content hidden p-6 pt-0 border-t">
-          <p class="text-gray-600">Review all your team’s current positions with the scoring criteria provided and combine it with your own experience and judgement—consider the positions categorized as High Importance to be involved in the succession planning program.</p>
-        </div>
+  <div class="space-y-3">
+    <!-- Item 1 -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition">
+      <button onclick="toggleAccordion('faq-1', event)" class="w-full flex justify-between items-center text-left p-5 rounded-t-xl bg-gray-50 hover:bg-ashley-orange/10 transition">
+        <h4 class="font-semibold text-gray-900">Q1. What am I expected to do regarding identifying critical roles (Stage 1)?</h4>
+        <span class="accordion-icon text-ashley-orange text-lg transition-transform duration-200">▼</span>
+      </button>
+      <div id="faq-1" class="accordion-content hidden p-5 border-t border-ashley-orange/20 bg-white rounded-b-xl">
+        <p class="text-gray-700 leading-relaxed">
+          Review all your team’s current positions with the scoring criteria provided and combine it with your own experience and judgment—consider the positions categorized as High Importance to be involved in the succession planning program.
+        </p>
       </div>
+    </div>
 
-      <div class="bg-white rounded-xl border">
-        <button onclick="toggleAccordion('faq-2', event)" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
-          <h4 class="font-semibold text-gray-900">Q2. What am I expected to do regarding identifying talent pool (Stage 2)?</h4>
-          <span class="accordion-icon text-ashley-orange">▼</span>
-        </button>
-        <div id="faq-2" class="accordion-content hidden p-6 pt-0 border-t">
-          <p class="text-gray-600">You are expected to actively participate in Round 1 – HoD Nomination by reviewing the Green Zone participants in the 9-Box Grid. Asia HR will handle Round 2 – Candidate Self-Application. Then again, you are expected to actively participate in HoD Review & Position Matching to review applications and match candidates to their suitable positions for Stage 3 – Gap Assessment.</p>
-        </div>
+    <!-- Item 2 -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition">
+      <button onclick="toggleAccordion('faq-2', event)" class="w-full flex justify-between items-center text-left p-5 rounded-t-xl bg-gray-50 hover:bg-ashley-orange/10 transition">
+        <h4 class="font-semibold text-gray-900">Q2. What am I expected to do regarding identifying talent pool (Stage 2)?</h4>
+        <span class="accordion-icon text-ashley-orange text-lg transition-transform duration-200">▼</span>
+      </button>
+      <div id="faq-2" class="accordion-content hidden p-5 border-t border-ashley-orange/20 bg-white rounded-b-xl">
+        <p class="text-gray-700 leading-relaxed">
+          You are expected to actively participate in Round 1 – HoD Nomination by reviewing the Green Zone participants in the 9-Box Grid. Asia HR will handle Round 2 – Candidate Self-Application. Then again, you are expected to actively participate in HoD Review & Position Matching to review applications and match candidates to their suitable positions for Stage 3 – Gap Assessment.
+        </p>
       </div>
+    </div>
 
-      <div class="bg-white rounded-xl border">
-        <button onclick="toggleAccordion('faq-3', event)" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
-          <h4 class="font-semibold text-gray-900">Q3. How do I participate in the readiness and gap assessment process?</h4>
-          <span class="accordion-icon text-ashley-orange">▼</span>
-        </button>
-        <div id="faq-3" class="accordion-content hidden p-6 pt-0 border-t">
-          <p class="text-gray-600">You’ll review each candidate’s self-assessment on competencies and qualifications, provide comments, and determine readiness categories such as “Ready Now (≤6 months)”, “Ready Soon (≤2 years)”, or “Watch List (≥2 years)”. Those in “Ready Now” or “Ready Soon” move forward to the Talent Pool and IDP development program.</p>
-        </div>
+    <!-- Item 3 -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition">
+      <button onclick="toggleAccordion('faq-3', event)" class="w-full flex justify-between items-center text-left p-5 rounded-t-xl bg-gray-50 hover:bg-ashley-orange/10 transition">
+        <h4 class="font-semibold text-gray-900">Q3. How do I participate in the readiness and gap assessment process?</h4>
+        <span class="accordion-icon text-ashley-orange text-lg transition-transform duration-200">▼</span>
+      </button>
+      <div id="faq-3" class="accordion-content hidden p-5 border-t border-ashley-orange/20 bg-white rounded-b-xl">
+        <p class="text-gray-700 leading-relaxed">
+          You’ll review each candidate’s self-assessment on competencies and qualifications, provide comments, and determine readiness categories such as “Ready Now (≤6 months)”, “Ready Soon (≤2 years)”, or “Ready Later (≥2 years)”. Those in “Ready Now” or “Ready Soon” move forward to the Talent Pool and IDP development program.
+        </p>
       </div>
+    </div>
 
-      <div class="bg-white rounded-xl border">
-        <button onclick="toggleAccordion('faq-4', event)" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
-          <h4 class="font-semibold text-gray-900">Q4. What’s my role in supporting individual development?</h4>
-          <span class="accordion-icon text-ashley-orange">▼</span>
-        </button>
-        <div id="faq-4" class="accordion-content hidden p-6 pt-0 border-t">
-          <p class="text-gray-600">Help team members set realistic goals through Individual Development Plans (IDPs)—assigning appropriate work projects, mentorship, or training opportunities. Asia HR will co-facilitate workshops and provide guidance for both HoDs and team members to ensure successful IDP development.</p>
-        </div>
+    <!-- Item 4 -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition">
+      <button onclick="toggleAccordion('faq-4', event)" class="w-full flex justify-between items-center text-left p-5 rounded-t-xl bg-gray-50 hover:bg-ashley-orange/10 transition">
+        <h4 class="font-semibold text-gray-900">Q4. What’s my role in supporting individual development?</h4>
+        <span class="accordion-icon text-ashley-orange text-lg transition-transform duration-200">▼</span>
+      </button>
+      <div id="faq-4" class="accordion-content hidden p-5 border-t border-ashley-orange/20 bg-white rounded-b-xl">
+        <p class="text-gray-700 leading-relaxed">
+          Help team members set realistic goals through Individual Development Plans (IDPs)—assigning appropriate work projects, mentorship, or training opportunities. Asia HR will co-facilitate workshops and provide guidance for both HoDs and team members to ensure successful IDP development.
+        </p>
       </div>
+    </div>
 
-      <div class="bg-white rounded-xl border">
-        <button onclick="toggleAccordion('faq-5', event)" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
-          <h4 class="font-semibold text-gray-900">Q5. Do I have to attend meetings or workshops about succession planning?</h4>
-          <span class="accordion-icon text-ashley-orange">▼</span>
-        </button>
-        <div id="faq-5" class="accordion-content hidden p-6 pt-0 border-t">
-          <p class="text-gray-600">Yes. You are expected to join scheduled briefings, training sessions, and review meetings organized by HR or program facilitators to stay updated and aligned with the correct process.</p>
-        </div>
+    <!-- Item 5 -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition">
+      <button onclick="toggleAccordion('faq-5', event)" class="w-full flex justify-between items-center text-left p-5 rounded-t-xl bg-gray-50 hover:bg-ashley-orange/10 transition">
+        <h4 class="font-semibold text-gray-900">Q5. Do I have to attend meetings or workshops about succession planning?</h4>
+        <span class="accordion-icon text-ashley-orange text-lg transition-transform duration-200">▼</span>
+      </button>
+      <div id="faq-5" class="accordion-content hidden p-5 border-t border-ashley-orange/20 bg-white rounded-b-xl">
+        <p class="text-gray-700 leading-relaxed">
+          Yes. You are expected to join scheduled briefings, training sessions, and review meetings organized by HR or program facilitators to stay updated and aligned with the correct process.
+        </p>
       </div>
+    </div>
 
-      <div class="bg-white rounded-xl border">
-        <button onclick="toggleAccordion('faq-6', event)" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
-          <h4 class="font-semibold text-gray-900">Q6. What are my communication responsibilities?</h4>
-          <span class="accordion-icon text-ashley-orange">▼</span>
-        </button>
-        <div id="faq-6" class="accordion-content hidden p-6 pt-0 border-t">
-          <p class="text-gray-600">Clearly communicate the framework, expectations, and timelines to your team. Help them understand how to participate and the benefits of being part of the succession planning journey.</p>
-        </div>
+    <!-- Item 6 -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition">
+      <button onclick="toggleAccordion('faq-6', event)" class="w-full flex justify-between items-center text-left p-5 rounded-t-xl bg-gray-50 hover:bg-ashley-orange/10 transition">
+        <h4 class="font-semibold text-gray-900">Q6. What are my communication responsibilities?</h4>
+        <span class="accordion-icon text-ashley-orange text-lg transition-transform duration-200">▼</span>
+      </button>
+      <div id="faq-6" class="accordion-content hidden p-5 border-t border-ashley-orange/20 bg-white rounded-b-xl">
+        <p class="text-gray-700 leading-relaxed">
+          Clearly communicate the framework, expectations, and timelines to your team. Help them understand how to participate and the benefits of being part of the succession planning journey.
+        </p>
       </div>
+    </div>
 
-      <div class="bg-white rounded-xl border">
-        <button onclick="toggleAccordion('faq-7', event)" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
-          <h4 class="font-semibold text-gray-900">Q7. As a Head of Department, am I responsible for program administration or just decision-making?</h4>
-          <span class="accordion-icon text-ashley-orange">▼</span>
-        </button>
-        <div id="faq-7" class="accordion-content hidden p-6 pt-0 border-t">
-          <p class="text-gray-600">Your main duties are decision-making and talent development. Administrative work such as tracking and reminders is handled primarily by the Asia HR program organizers.</p>
-        </div>
+    <!-- Item 7 -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition">
+      <button onclick="toggleAccordion('faq-7', event)" class="w-full flex justify-between items-center text-left p-5 rounded-t-xl bg-gray-50 hover:bg-ashley-orange/10 transition">
+        <h4 class="font-semibold text-gray-900">Q7. As a Head of Department, am I responsible for program administration or just decision-making?</h4>
+        <span class="accordion-icon text-ashley-orange text-lg transition-transform duration-200">▼</span>
+      </button>
+      <div id="faq-7" class="accordion-content hidden p-5 border-t border-ashley-orange/20 bg-white rounded-b-xl">
+        <p class="text-gray-700 leading-relaxed">
+          Your main duties are decision-making and talent development. Administrative work such as tracking and reminders is handled primarily by the Asia HR program organizers.
+        </p>
       </div>
+    </div>
 
-      <div class="bg-white rounded-xl border">
-        <button onclick="toggleAccordion('faq-8', event)" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
-          <h4 class="font-semibold text-gray-900">Q8. Will I need to provide feedback about the program?</h4>
-          <span class="accordion-icon text-ashley-orange">▼</span>
-        </button>
-        <div id="faq-8" class="accordion-content hidden p-6 pt-0 border-t">
-          <p class="text-gray-600">Yes. You are encouraged to share feedback and report issues with program organizers. Your input helps improve the process and resolve challenges affecting your department’s participation.</p>
-        </div>
+    <!-- Item 8 -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition">
+      <button onclick="toggleAccordion('faq-8', event)" class="w-full flex justify-between items-center text-left p-5 rounded-t-xl bg-gray-50 hover:bg-ashley-orange/10 transition">
+        <h4 class="font-semibold text-gray-900">Q8. Will I need to provide feedback about the program?</h4>
+        <span class="accordion-icon text-ashley-orange text-lg transition-transform duration-200">▼</span>
+      </button>
+      <div id="faq-8" class="accordion-content hidden p-5 border-t border-ashley-orange/20 bg-white rounded-b-xl">
+        <p class="text-gray-700 leading-relaxed">
+          Yes. You are encouraged to share feedback and report issues with program organizers. Your input helps improve the process and resolve challenges affecting your department’s participation.
+        </p>
       </div>
     </div>
   </div>
+</div>
 </section>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -3896,6 +4022,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial state
   applyState();
+});
+function toggleAccordion(id, event) {
+  const content = document.getElementById(id);
+  const icon = event.currentTarget.querySelector('.accordion-icon');
+
+  // Đóng tất cả trừ cái đang click
+  document.querySelectorAll('.accordion-content').forEach(el => {
+    if (el.id !== id) el.classList.add('hidden');
+  });
+  document.querySelectorAll('.accordion-icon').forEach(el => {
+    if (el !== icon) el.textContent = '▼';
+  });
+
+  // Toggle hiển thị và biểu tượng
+  const isHidden = content.classList.contains('hidden');
+  content.classList.toggle('hidden');
+  icon.textContent = isHidden ? '▲' : '▼';
+}
+
+// Nếu click ra ngoài toàn vùng FAQ thì gập lại hết
+document.addEventListener('click', (e) => {
+  const isInsideFAQ = e.target.closest('.bg-white.border');
+  if (!isInsideFAQ) {
+    document.querySelectorAll('.accordion-content').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.accordion-icon').forEach(el => el.textContent = '▼');
+  }
 });
 </script>
   </main>
@@ -4486,6 +4638,4 @@ let facilitatorMode = false;
   window.linksReady = wireLinksFromCSV();
 </script>
 </body>
-
 </html>
-
