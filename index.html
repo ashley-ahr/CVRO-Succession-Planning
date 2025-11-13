@@ -1528,7 +1528,6 @@ if (btnEmail){
   <!-- Right: Button + Badge -->
   <div id="folderWrap" class="flex items-center gap-3 justify-start md:justify-end">
     
-    <!-- 🔒 Locked by default -->
     <a id="btnFolderLink"
        data-link-id="stage1B"
        href="#"
@@ -1550,9 +1549,7 @@ if (btnEmail){
       ⏳ Opens soon
     </span>
   </div>
-
 </div>
-
 </div>
 
 <!-- ===== Watermark CSS (KEEP) ===== -->
@@ -1579,7 +1576,7 @@ if (btnEmail){
 <script>
   document.addEventListener('DOMContentLoaded', () => {
 
-    const unlockAtFolder = new Date('2024-11-18T00:00:00+07:00').getTime(); giờ mở folder
+    const unlockAtFolder = new Date('2024-11-18T00:00:00+07:00').getTime(); //giờ mở folder
     const folderBtn   = document.getElementById('btnFolderLink');
     const folderBadge = document.getElementById('folderBadge');
 
@@ -1613,7 +1610,6 @@ if (btnEmail){
     setInterval(updateFolderState, 60000);
   });
 </script>
-
 </div>
 </div>
 <!-- STAGE 2 – Identify Talent Pool (Collapsible style, 3 colorful rounds) -->
