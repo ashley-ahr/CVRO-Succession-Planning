@@ -1487,7 +1487,7 @@ if (btnEmail){
   
   
   <div class="flex flex-col">
-    <label class="block font-medium">Functional/Technical Knowledge</label>
+    <label class="block font-medium">Functional/ Technical Knowledge</label>
     <p class="text-xs text-gray-500 mt-1">Systems, tools, or processes required.</p>
     <p class="mt-2 px-3 py-2 bg-white rounded border">
 	NEWGO process; PPR reviews; drawings evaluation; AIS, CTN, RPDF review; vendor communication; PPR tracking; quality/process projects; AutoCAD; MS Office.
@@ -2190,11 +2190,13 @@ function clearCards(){
 </div>
 
 <!-- ============ Example Scenario (Modal) ============ -->
-<div id="exampleModal" class="fixed inset-0 z-50 hidden" aria-hidden="true">
-  <div id="exampleBackdrop" class="absolute inset-0 bg-black/40"></div>
+<div id="exampleModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-hidden="true">
+  <!-- Backdrop: fixed để luôn phủ full màn hình khi scroll -->
+  <div id="exampleBackdrop" class="fixed inset-0 bg-black/40"></div>
 
-  <div class="relative mx-auto max-w-2xl mt-20 px-4">
-    <div class="bg-white rounded-2xl shadow-2xl border border-orange-200 overflow-hidden">
+  <!-- Wrapper: cho phép modal đi theo scroll, căn giữa -->
+  <div class="relative z-10 flex min-h-full items-start justify-center px-4 py-8">
+    <div class="bg-white rounded-2xl shadow-2xl border border-orange-200 overflow-hidden max-w-2xl w-full">
       <!-- Header -->
       <div class="flex items-center justify-between px-6 py-3 bg-orange-50 border-b border-orange-100">
         <h3 class="text-base font-semibold text-orange-700">
@@ -2205,9 +2207,8 @@ function clearCards(){
           aria-label="Close">✖</button>
       </div>
 
-      <!-- Body -->
+      <!-- Body (không inner-scroll) -->
       <div class="p-6 text-sm text-gray-800 space-y-5 leading-relaxed">
-
         <p>
           In the <strong>Engineering Department</strong>, the HoD reviews candidates for the successor role
           <em>Senior Process Engineer</em> using three lists — internal, incoming, and outgoing applicants.
@@ -2219,11 +2220,13 @@ function clearCards(){
           <span class="px-2.5 py-1 rounded-full border bg-orange-50 text-orange-700">Incoming</span>
           <span class="px-2.5 py-1 rounded-full border bg-orange-50 text-orange-700">Outgoing</span>
         </div>
-		<p> After evaluating all profiles against the <strong>Success Profile</strong>,
-		a shortlist of three candidates is created. The HoD endorses <strong>two candidates</strong>
-		for this <strong>two-year cycle</strong> based on the department’s capacity for
-		structured development.
-		</p>
+
+        <p>
+          After evaluating all profiles against the <strong>Success Profile</strong>,
+          a shortlist of three candidates is created. The HoD endorses <strong>two candidates</strong>
+          for this <strong>two-year cycle</strong> based on the department’s capacity for
+          structured development.
+        </p>
 
         <!-- Mini matching snapshot -->
         <div class="rounded-xl border border-gray-200">
@@ -2398,7 +2401,7 @@ function clearCards(){
 </div>
 </div>
 
-<!-- STEP 3 CONTENT -->
+<!-- STAGE 3 CONTENT -->
 <div id="step-3" class="step-content hidden">
   <div class="bg-white rounded-xl border p-6 mb-6">
     <h3 class="text-2xl font-bold text-gray-900 mb-2">STAGE 3: Gap Assessment</h3>
@@ -2438,7 +2441,7 @@ function clearCards(){
       <span class="text-ashley-orange font-medium underline decoration-transparent hover:decoration-inherit">View details</span>
     </div>
     <p class="text-gray-600">
-      Self-rate each competency (Scale 1–5) and explain the chosen rating.
+      Self-rate each competency (Scale 1–3) and explain the chosen rating.
     </p>
   </button>
 
@@ -2450,238 +2453,825 @@ function clearCards(){
       <span class="text-ashley-orange font-medium underline decoration-transparent hover:decoration-inherit">View details</span>
     </div>
     <p class="text-gray-600">
-      (e.g., education, experience, certifications, tools) — describe how current experience aligns with the listed requirements.
-    </p>
+	Self-rate each job qualification (Scale 1–3) and explain the chosen rating.
+	</p>
   </button>
 </div>
 </div>
 </details>
 
 <!-- ===== MODAL: Competency Requirements ===== -->
-<div id="modalCompetency" class="fixed inset-0 z-50 hidden">
-  <div class="absolute inset-0 bg-black/40" data-close="modalCompetency"></div>
-  <div class="relative mx-auto max-w-4xl mt-16 px-4">
-    <div class="bg-white rounded-2xl shadow-2xl border border-orange-200 overflow-hidden">
+<div id="modalCompetency" class="fixed inset-0 z-50 hidden overflow-y-auto">
+  <!-- Backdrop -->
+  <div class="fixed inset-0 bg-black/40" data-close="modalCompetency"></div>
+
+  <!-- Modal wrapper -->
+  <div class="relative z-10 flex min-h-full items-start justify-center px-4 py-8">
+
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-2xl shadow-2xl border border-orange-200 overflow-hidden max-w-4xl w-full">
+
+      <!-- Header -->
       <div class="flex items-center justify-between px-6 py-3 bg-orange-50 border-b border-orange-100">
         <h3 class="text-base font-semibold text-orange-700">Competency Self-Assessment – Instruction</h3>
         <button class="w-8 h-8 rounded-lg hover:bg-orange-100 text-orange-700" data-close="modalCompetency">✖</button>
       </div>
 
+      <!-- Body -->
       <div class="p-6 text-sm text-gray-800 space-y-5">
-        <!-- Instruction Scale (1–5) with colors -->
+
+        <!-- Instruction Scale (1–3) -->
         <section>
-          <div class="font-medium text-gray-900 mb-2">Instruction Scale (1–5): 
-		  Candidate self-rating their <span class="text-ashley-orange">current competency vs. target successor position.</span></div>
-          <div class="grid grid-cols-5 gap-2">
+          <div class="font-medium text-gray-900 mb-2">
+            Instruction Scale (1–3): Candidate self-rating their 
+            <span class="text-ashley-orange">current competency vs. target successor position</span>.
+          </div>
+
+          <div class="grid grid-cols-3 gap-3">
             <div class="rounded-lg border border-orange-200 bg-orange-50 text-center p-3">
               <div class="text-lg font-bold text-gray-900">1</div>
-              <div class="text-xs text-gray-700">Far Below</div>
+              <div class="text-xs text-gray-700">Far Below Expectations</div>
             </div>
             <div class="rounded-lg border border-orange-200 bg-orange-50 text-center p-3">
               <div class="text-lg font-bold text-gray-900">2</div>
-              <div class="text-xs text-gray-700">Below</div>
+              <div class="text-xs text-gray-700">Below Expectations</div>
             </div>
             <div class="rounded-lg border border-orange-300 bg-orange-100 text-center p-3">
               <div class="text-lg font-bold text-gray-900">3</div>
               <div class="text-xs text-gray-700">Meets Expectations</div>
             </div>
-            <div class="rounded-lg border border-orange-400 bg-orange-200 text-center p-3">
-              <div class="text-lg font-bold text-gray-900">4</div>
-              <div class="text-xs text-gray-700">Above</div>
-            </div>
-            <div class="rounded-lg border border-orange-500 bg-orange-200 text-center p-3">
-              <div class="text-lg font-bold text-gray-900">5</div>
-              <div class="text-xs text-gray-700">Far Above</div>
-            </div>
           </div>
         </section>
 
-        <!-- What to explain for each rating (aligned to the scale colors) -->
+        <!-- What to explain -->
         <section>
           <div class="font-medium text-gray-900 mb-2">What to explain for each rating</div>
-          <div class="grid grid-cols-5 gap-2">
-            <!-- 1–2 (light) -->
+          <div class="grid grid-cols-3 gap-3">
             <div class="col-span-2 rounded-lg border border-orange-200 bg-orange-50 p-4 text-center">
               <div class="font-semibold mb-1">If 1–2</div>
-              <div class="text-gray-800 text-xs">Describe the main gaps or challenges.</div>
+              <div class="text-gray-800 text-xs">
+                Describe the main gaps, challenges, or situations where the competency is not yet effective.
+              </div>
             </div>
-            <!-- 3 (medium) -->
+
             <div class="col-span-1 rounded-lg border border-orange-300 bg-orange-100 p-4 text-center">
               <div class="font-semibold mb-1">If 3</div>
-              <div class="text-gray-800 text-xs">Explain what is met and areas for improvement.</div>
-            </div>
-            <!-- 4–5 (deep) -->
-            <div class="col-span-2 rounded-lg border border-orange-400 bg-orange-200 p-4 text-center">
-              <div class="font-semibold mb-1">If 4–5</div>
-              <div class="text-gray-800 text-xs">Provide specific examples showing strengths beyond expectations.</div>
+              <div class="text-gray-800 text-xs">
+                Explain what requirements are met, and highlight any remaining areas for improvement.
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- SBI Example table tinted by groups -->
+        <!-- EXAMPLE TABLE – Competency Self-Assessment -->
         <section>
-		<div class="font-medium text-gray-900 mb-2">
-		  <span class="text-ashley-orange">Example</span>
-		   – How to explain a candidate’s self-rating for the 
-		  <span class="text-ashley-orange">Communication</span> competency
-		</div>
+          <div class="font-medium text-gray-900 mb-2">
+            <span class="text-ashley-orange">Example</span> – How to explain rating for the 
+			<span class="text-ashley-orange">Competency Requirements </span>Self-Assessment
+		  </div>
+          <p class="text-xs text-gray-700 mb-2">
+		  This table uses the Team Leader of Product Engineering role as a sample to illustrate how a candidate may self-rate and explain their readiness.
+          </p>
+
           <div class="overflow-x-auto">
-            <table class="min-w-full text-sm bg-white border border-gray-200 rounded-lg">
-              <thead class="bg-gray-50 text-gray-600">
+            <table class="min-w-full text-xs bg-white border border-orange-300 rounded-lg table-fixed">
+              <thead class="bg-orange-200 text-gray-900">
                 <tr>
-                  <th class="px-3 py-2 text-left w-48">Rating</th>
-                  <th class="px-3 py-2 text-left">Example (using SBI format)</th>
+                  <th class="px-3 py-2 text-left border-b border-orange-300 w-[12%]">Areas</th>
+                  <th class="px-3 py-2 text-center border-b border-orange-300 w-[5%]">No.</th>
+				<th class="px-3 py-2 text-left border-b border-orange-300 w-[26%]">
+				  <div class="flex items-center justify-between">
+				    <span>Competency Name</span>
+				    <button 
+				      type="button"
+				      id="toggleAllBtn"
+				      class="text-ashley-orange text-[11px] font-semibold hover:underline"
+				      onclick="toggleAllCompetencies()">
+				      Show all
+				    </button>
+				  </div>
+				</th>
+                  <th class="px-3 py-2 text-center border-b border-orange-300 w-[5%]">Self-Rating</th>
+                  <th class="px-3 py-2 text-left border-b border-orange-300 w-[52%]">Example Explanation (Candidate)</th>
                 </tr>
               </thead>
-				 <tbody class="divide-y">
-				  <!-- 1–2 -->
-				  <tr class="bg-orange-100/50">
-				    <td class="px-3 py-2 font-medium">1–2 (Far Below / Below)</td>
-				    <td class="px-3 py-2 text-xs text-gray-800">
-				      <strong>Situation:</strong> During several team meetings, some updates I shared often led to confusion.<br>
-				      <strong>Behavior:</strong> I tended to speak too quickly and skip supporting data, without checking understanding.<br>
-				      <strong>Impact:</strong> As a result, team members frequently misunderstood priorities and follow-up tasks had to be clarified afterward.
-				    </td>
-				  </tr>
-				
-				  <!-- 3 -->
-				  <tr class="bg-orange-100/90">
-				    <td class="px-3 py-2 font-medium">3 (Meets)</td>
-				    <td class="px-3 py-2 text-xs text-gray-800">
-				      <strong>Situation:</strong> In regular HR briefings, I summarize key updates from management.<br>
-				      <strong>Behavior:</strong> I usually prepare slides and communicate clearly, allowing time for Q&amp;A — though sometimes my materials are too text-heavy.<br>
-				      <strong>Impact:</strong> The team generally understands the message, but engagement could improve with more visuals and interactive sharing.
-				    </td>
-				  </tr>
-				
-				  <!-- 4–5 -->
-				  <tr class="bg-orange-200/80">
-				    <td class="px-3 py-2 font-medium">4–5 (Above / Far Above)</td>
-				    <td class="px-3 py-2 text-xs text-gray-800">
-				      <strong>Situation:</strong> Across multiple townhall sessions and leadership meetings, I’ve been selected to present HR strategy topics such as the Succession Planning Framework.<br>
-				      <strong>Behavior:</strong> I consistently use clear visuals, storytelling, and bilingual summaries to ensure understanding across regions.<br>
-				      <strong>Impact:</strong> Presentations are regularly referenced by HoDs afterward, indicating strong message clarity and sustained communication effectiveness.
-				    </td>
-				  </tr>
-				</tbody>
+
+<tbody class="divide-y divide-orange-200">
+
+  <!-- BUSINESS / MANAGEMENT SKILLS -->
+  <!-- 1 Business Knowledge -->
+  <tr>
+    <td class="px-3 py-2 align-center" rowspan="4">Business / Management Skills</td>
+    <td class="px-3 py-2 text-center align-center">1</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c1')">
+        Business Knowledge
+      </button>
+      <div id="c1" class="mt-1 text-[11px] text-gray-600 hidden">
+        Demonstrates a keen understanding of basic business operations and the organizational levers (systems, processes, departments, functions) that drive profitable growth, draws from personal experience to quickly evaluate business plans and processes to identify data or recommendations that need further investigation.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 
+                   text-[11px] font-semibold text-orange-800">
+        2
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> In cost/vendor reviews, I grasp technical data but not full business impact.<br>
+  <strong>[B]</strong> I analyze engineering details but depend on others for financial insight.<br>
+  <strong>[I]</strong> This limits end-to-end evaluation, so I need more exposure to business drivers.
+</td>
+  </tr>
+
+  <!-- 2 Customer Focus -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">2</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c2')">
+        Customer Focus
+      </button>
+      <div id="c2" class="mt-1 text-[11px] text-gray-600 hidden">
+        Ensuring that the internal or external customer’s perspective is a driving force behind strategic priorities, business decisions, organizational processes, and individual activities, crafting and implementing service practices that meet customers’ and own organization’s needs, promoting and operationalizing customer service as a value.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 
+                   text-[11px] font-semibold text-orange-900">
+        3
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> I consult internal customers before finalizing proposals.<br>
+  <strong>[B]</strong> I adjust solutions based on their feedback to match expectations.<br>
+  <strong>[I]</strong> This improves alignment; I aim to involve them earlier in new processes.
+</td>
+  </tr>
+
+  <!-- 3 Decision Making -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">3</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c3')">
+        Decision Making
+      </button>
+      <div id="c3" class="mt-1 text-[11px] text-gray-600 hidden">
+        Identifying and understanding problems and opportunities by gathering, analyzing, and interpreting quantitative and qualitative information, choosing the best course of action by establishing clear decision criteria, generating and evaluating alternatives, and making timely decisions, taking action that is consistent with available facts and constraints and optimizes probable consequences.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 
+                   text-[11px] font-semibold text-orange-900">
+        3
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> Trials often require quick, informed decisions.<br>
+  <strong>[B]</strong> I review data, compare options, and choose the most practical path.<br>
+  <strong>[I]</strong> Decisions are solid; I’m working on improving speed under pressure.
+</td>
+  </tr>
+
+  <!-- 4 Operational Excellence -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">4</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c4')">
+        Operational Excellence
+      </button>
+      <div id="c4" class="mt-1 text-[11px] text-gray-600 hidden">
+        The systematic approach and integrated management philosophy that enhances the efficiency, quality, and effectiveness of the company's operations.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 
+                   text-[11px] font-semibold text-orange-800">
+        2
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> I join troubleshooting and waste-reduction activities.<br>
+  <strong>[B]</strong> I contribute ideas but haven’t led a full improvement project yet.<br>
+  <strong>[I]</strong> Impact is limited; I need experience owning CI projects end-to-end.
+</td>
+  </tr>
+
+  <!-- INTERPERSONAL EFFECTIVENESS -->
+  <!-- 5 Communication -->
+  <tr>
+    <td class="px-3 py-2 align-center" rowspan="3">Interpersonal Effectiveness</td>
+    <td class="px-3 py-2 text-center align-center">5</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c5')">
+        Communication
+      </button>
+      <div id="c5" class="mt-1 text-[11px] text-gray-600 hidden">
+        Conveying information and ideas clearly and concisely to individuals or groups in an engaging manner that helps them understand and retain the message, listening actively to others.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 
+                   text-[11px] font-semibold text-orange-900">
+        3
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> I explain technical issues in cross-functional meetings.<br>
+  <strong>[B]</strong> I tailor explanations to different audiences for clarity.<br>
+  <strong>[I]</strong> Communication is effective; written updates can still be sharper.
+</td>
+  </tr>
+
+  <!-- 6 Emotional Intelligence Essentials -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">6</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c6')">
+        Emotional Intelligence Essentials
+      </button>
+      <div id="c6" class="mt-1 text-[11px] text-gray-600 hidden">
+        Establishing and sustaining trusting relationships by accurately perceiving and interpreting own and others’ emotions and behavior, leveraging insights to effectively manage own responses so that one’s behavior matches one’s values and delivers intended results.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 
+                   text-[11px] font-semibold text-orange-800">
+        2
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> Under deadline pressure, team stress increases.<br>
+  <strong>[B]</strong> I stay calm but sometimes react too quickly.<br>
+  <strong>[I]</strong> This affects interactions; I’m learning to pause and listen more.
+</td>
+  </tr>
+
+  <!-- 7 Cross-team Collaboration -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">7</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c7')">
+        Cross-team Collaboration
+      </button>
+      <div id="c7" class="mt-1 text-[11px] text-gray-600 hidden">
+        The ability to effectively work across diverse teams, departments, and geographical locations to achieve common goals.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 
+                   text-[11px] font-semibold text-orange-800">
+        2
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> I work closely with QA and Vendor on daily issues.<br>
+  <strong>[B]</strong> I coordinate well but rarely lead broader cross-team projects.<br>
+  <strong>[I]</strong> To increase impact, I need stronger engagement with PD and SCO Team.
+</td>
+  </tr>
+
+  <!-- PERSONAL ATTRIBUTES -->
+  <!-- 8 Personal Courage -->
+  <tr>
+    <td class="px-3 py-2 align-center" rowspan="3">Personal Attributes</td>
+    <td class="px-3 py-2 text-center align-center">8</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c8')">
+        Personal Courage
+      </button>
+      <div id="c8" class="mt-1 text-[11px] text-gray-600 hidden">
+        Proactively confronting difficult issues, making valiant choices and taking bold action in the face of opposition or fear.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 
+                   text-[11px] font-semibold text-orange-800">
+        2
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> In meetings, challenging senior views can be difficult.<br>
+  <strong>[B]</strong> I speak confidently in small groups but hesitate in larger forums.<br>
+  <strong>[I]</strong> This limits influence; using data helps me express concerns more firmly.
+</td>
+  </tr>
+
+  <!-- 9 Positive Approach -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">9</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c9')">
+        Positive Approach
+      </button>
+      <div id="c9" class="mt-1 text-[11px] text-gray-600 hidden">
+        Demonstrating a positive attitude in the face of difficult or challenging situations, providing an uplifting (yet realistic) outlook on what the future holds and the opportunities it might present.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 
+                   text-[11px] font-semibold text-orange-900">
+        3
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> When issues arise, team morale can drop.<br>
+  <strong>[B]</strong> I stay solution-oriented and encourage learning from mistakes.<br>
+  <strong>[I]</strong> This keeps momentum; I’m improving how I acknowledge concerns.
+</td>
+  </tr>
+
+  <!-- 10 Adaptability -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">10</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c10')">
+        Adaptability
+      </button>
+      <div id="c10" class="mt-1 text-[11px] text-gray-600 hidden">
+        Maintaining effectiveness when experiencing major changes in work responsibilities or environment (e.g., people, processes, structure, or culture), adjusting effectively to change by exploring the benefits, trying new approaches, and collaborating with others to make the change successful.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 
+                   text-[11px] font-semibold text-orange-900">
+        3
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> Priorities shift quickly with vendor or quality changes.<br>
+  <strong>[B]</strong> I adjust plans fast and help operators adapt to updates.<br>
+  <strong>[I]</strong> Work stays on track; I aim to communicate changes earlier.
+</td>
+  </tr>
+
+  <!-- LEADERSHIP IMPACT -->
+  <!-- 11 Coaching and Developing Others -->
+  <tr>
+    <td class="px-3 py-2 align-center" rowspan="5">Leadership Impact</td>
+    <td class="px-3 py-2 text-center align-center">11</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c11')">
+        Coaching and Developing Others
+      </button>
+      <div id="c11" class="mt-1 text-[11px] text-gray-600 hidden">
+        Providing feedback, instruction, and development guidance to help others excel in their current or future job responsibilities, planning and supporting the development of individual skills and abilities.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 
+                   text-[11px] font-semibold text-orange-800">
+        2
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> Juniors seek help on drawings and trial tasks.<br>
+  <strong>[B]</strong> I guide them, but feedback is informal and not consistent.<br>
+  <strong>[I]</strong> Growth varies; I need to coach more systematically.
+</td>
+  </tr>
+
+  <!-- 12 Driving Innovation -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">12</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c12')">
+        Driving Innovation
+      </button>
+      <div id="c12" class="mt-1 text-[11px] text-gray-600 hidden">
+        Creating an environment (culture) that inspires people to generate novel solutions with measurable value for existing and potential customers (internal or external), encouraging experimentation with new ways to solve work problems and seize opportunities that result in unique and differentiated solutions.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 
+                   text-[11px] font-semibold text-orange-800">
+        2
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> Most of my ideas improve existing processes.<br>
+  <strong>[B]</strong> I rarely suggest new or experimental approaches.<br>
+  <strong>[I]</strong> Innovation is limited; I aim to test small new methods.
+</td>
+  </tr>
+
+  <!-- 13 Driving for Results -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">13</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c13')">
+        Driving for Results
+      </button>
+      <div id="c13" class="mt-1 text-[11px] text-gray-600 hidden">
+        Setting high goals for personal and group accomplishment, using measurement methods to monitor progress toward goals, tenaciously working to meet or exceed goals while deriving satisfaction from that achievement and continuous improvement.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 
+                   text-[11px] font-semibold text-orange-900">
+        3
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> Deadlines get tight before pilot builds.<br>
+  <strong>[B]</strong> I track progress closely and escalate issues early.<br>
+  <strong>[I]</strong> Keeps timelines stable; prioritization can still improve.
+</td>
+  </tr>
+
+  <!-- 14 Facilitating Change -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">14</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c14')">
+        Facilitating Change
+      </button>
+      <div id="c14" class="mt-1 text-[11px] text-gray-600 hidden">
+        Encouraging others to implement better approaches to address problems and opportunities, leading the implementation and acceptance of change within the workplace.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 
+                   text-[11px] font-semibold text-orange-800">
+        2
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> Teams often have concerns about new processes.<br>
+  <strong>[B]</strong> I support changes but don’t lead discussions or clarify the “why.”<br>
+  <strong>[I]</strong> Adoption slows; I need to address concerns more proactively.
+</td>
+  </tr>
+
+  <!-- 15 Delegation and Empowerment -->
+  <tr>
+    <td class="px-3 py-2 text-center align-center">15</td>
+    <td class="px-3 py-2 align-center">
+      <button type="button"
+              class="text-ashley-orange font-semibold hover:underline"
+              onclick="toggleCompetencyDesc('c15')">
+        Delegation and Empowerment
+      </button>
+      <div id="c15" class="mt-1 text-[11px] text-gray-600 hidden">
+        Identifying and leveraging opportunities to accelerate results and build capability by assigning tasks and decision-making responsibilities to individuals or teams with clear boundaries, expectations, support, and follow-up.
+      </div>
+    </td>
+    <td class="px-3 py-2 text-center align-center">
+      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 
+                   text-[11px] font-semibold text-orange-800">
+        2
+      </span>
+    </td>
+<td class="px-3 py-2 align-center">
+  <strong>[S]</strong> I often keep detailed tasks to ensure accuracy.<br>
+  <strong>[B]</strong> When delegating, I sometimes miss clear expectations and follow-ups.<br>
+  <strong>[I]</strong> Causes rework; improving delegation structure will help.
+</td>
+  </tr>
+
+</tbody>
+
 
             </table>
-			<p class="mt-3 text-xs text-gray-600 italic">
-			  🔸 <strong>Note:</strong> The SBI examples above illustrate how candidates can explain their ratings. 
-			  Each rating level (1–5) should reflect the <strong>consistent, observable behavior and performance</strong> 
-			  over time — not a single event, success, or mistake.
-			</p>
           </div>
+
+          <p class="mt-3 text-xs text-gray-600 italic">
+            🔸 The examples above demonstrate how to apply the SBI method when explaining ratings. 
+			AHR reminds candidates to base their self-ratings on <strong>consistent, demonstrated behavior </strong>, 
+			and encourages HoDs to validate scores using the same standard—avoiding judgments 
+			based on single incidents or exceptional situations.
+          </p>
         </section>
+
       </div>
 
+      <!-- Footer -->
       <div class="px-6 py-3 bg-gray-50 border-t flex justify-end">
-        <button class="inline-flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-1.5 rounded-lg" data-close="modalCompetency">Close</button>
+        <button class="inline-flex items-center gap-2 bg-gray-200 hover:bg-gray-300 
+                       text-gray-800 px-4 py-1.5 rounded-lg"
+                data-close="modalCompetency">Close</button>
       </div>
+
     </div>
   </div>
 </div>
 
+<script>
+  // toggle từng competency (bấm vào tên)
+  function toggleCompetencyDesc(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('hidden');
+  }
 
-<!-- ===== MODAL: Job Qualifications ===== -->
-<div id="modalJQ" class="fixed inset-0 z-50 hidden">
-  <div class="absolute inset-0 bg-black/40" data-close="modalJQ"></div>
-  <div class="relative mx-auto max-w-4xl mt-16 px-4">
-    <div class="bg-white rounded-2xl shadow-2xl border border-orange-200 overflow-hidden">
+  // toggle tất cả description
+  let allShown = false; // trạng thái hiện / ẩn
+
+  function toggleAllCompetencies() {
+    allShown = !allShown;
+    const btn = document.getElementById("toggleAllBtn");
+
+    // lấy tất cả competency description c1..c15
+    const descs = document.querySelectorAll('div[id^="c"]');
+
+    descs.forEach(div => {
+      if (allShown) {
+        div.classList.remove("hidden");
+      } else {
+        div.classList.add("hidden");
+      }
+    });
+
+    // đổi text nút
+    btn.textContent = allShown ? "Hide all" : "Show all";
+  }
+</script>
+
+
+
+
+<!-- ===== MODAL: Job Qualifications – Self-Assessment ===== -->
+<div id="modalJQ" class="fixed inset-0 z-50 hidden overflow-y-auto">
+  
+  <!-- Backdrop -->
+  <div class="fixed inset-0 bg-black/40" data-close="modalJQ"></div>
+
+  <!-- Wrapper -->
+  <div class="relative z-10 flex min-h-full items-start justify-center px-4 py-8">
+
+    <!-- Modal -->
+    <div class="relative bg-white rounded-2xl shadow-2xl border border-orange-200 overflow-hidden max-w-5xl w-full">
+
       <!-- Header -->
       <div class="flex items-center justify-between px-6 py-3 bg-orange-50 border-b border-orange-100">
-        <h3 class="text-base font-semibold text-orange-700">Job Qualifications – Alignment</h3>
+        <h3 class="text-base font-semibold text-orange-700">
+          Job Qualifications Self-Assessment – Instruction
+        </h3>
         <button class="w-8 h-8 rounded-lg hover:bg-orange-100 text-orange-700" data-close="modalJQ">✖</button>
       </div>
 
       <!-- Body -->
-      <div class="p-6 text-sm text-gray-800 space-y-4">
-        <!-- Question with info icon -->
-        <div class="flex items-start gap-3">
-          <div class="flex-1">
-            <div class="font-medium text-gray-900 mb-1">Question:</div>
-            <p>
-              Describe how your current experience aligns with the job qualifications defined in the 
-              <strong>Successor Profile</strong> of the intended successor role 
-              (e.g., education, years of experience, certifications, tools, and communication skills).
-            </p>
-          </div>
-          <button id="toggleJQInfo"
-		  class="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg border border-orange-300 
-		  bg-orange-100 text-ashley-orange hover:bg-orange-200"
-            title="Reference – Job Qualifications">
-            i
-          </button>
-        </div>
+      <div class="p-6 text-sm text-gray-800 space-y-5">
+   
+	    
+        <!-- QUESTION -->
+        <section>
+			<div class="font-medium text-gray-900 mb-2">
+			Instruction Scale (1–3): Candidate self-rating their 
+            <span class="text-ashley-orange">current experience vs. target successor position</span>.
+			<p class="mt-2 text-[11px] text-gray-700">
+            Describe how the candidate’s current experience aligns with the job qualifications defined in the 
+            <strong>Successor Profile</strong> of the intended successor role (e.g., education, years of experience, 
+            certifications, tools, and communication skills).
+          </p>
+        </section>
 
-        <!-- Collapsible Reference box (moved between Question and Example Answer) -->
-        <div id="jqInfoBox" class="hidden border border-yellow-300 bg-yellow-50 rounded-lg p-4">
-          <div class="font-medium text-ashley-orange mb-2">Reference: Job Qualifications — HR Senior Team Leader</div>
+        <!-- SCALE 1–3 -->
+        <section>
+          <div class="grid grid-cols-3 gap-3">
+
+            <!-- Rating 1 -->
+            <div class="rounded-lg border border-orange-200 bg-orange-50 p-3 text-center">
+              <div class="text-lg font-bold text-gray-900">1</div>
+              <div class="text-xs font-semibold text-gray-700 mb-1">Far Below Expectations</div>
+              <div class="text-[11px] text-gray-600 leading-snug">
+                The candidate has limited or no relevant experience, education, or skills for this requirement.
+              </div>
+            </div>
+
+            <!-- Rating 2 -->
+            <div class="rounded-lg border border-orange-200 bg-orange-50 p-3 text-center">
+              <div class="text-lg font-bold text-gray-900">2</div>
+              <div class="text-xs font-semibold text-gray-700 mb-1">Below Expectations</div>
+              <div class="text-[11px] text-gray-600 leading-snug">
+                The candidate partially meets the requirement but still has noticeable gaps or requires 
+				more consistent and demonstrated experience.
+              </div>
+            </div>
+
+            <!-- Rating 3 -->
+            <div class="rounded-lg border border-orange-300 bg-orange-100 p-3 text-center">
+              <div class="text-lg font-bold text-gray-900">3</div>
+              <div class="text-xs font-semibold text-gray-700 mb-1">Meets Expectations</div>
+              <div class="text-[11px] text-gray-600 leading-snug">
+                The candidate meets the requirement for the targeted successor role, 
+				with clear and relevant experience or qualifications already demonstrated.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- EXPLANATION REQUIREMENT -->
+        <section class="mt-4">
+          <div class="font-medium text-gray-900 mb-2">What to explain for each rating</div>
+
+          <div class="grid grid-cols-3 gap-3">
+
+            <!-- If 1–2 -->
+            <div class="col-span-2 rounded-lg border border-orange-200 bg-orange-50 p-4 text-center">
+              <div class="font-semibold mb-1">If 1–2</div>
+              <div class="text-gray-800 text-xs leading-snug">
+                The candidate should describe the main gaps or challenges they currently face 
+				(e.g., missing experience, limited exposure, or skills they still need to build).
+              </div>
+            </div>
+
+            <!-- If 3 -->
+            <div class="col-span-1 rounded-lg border border-orange-300 bg-orange-100 p-4 text-center">
+              <div class="font-semibold mb-1">If 3</div>
+              <div class="text-gray-800 text-xs leading-snug">
+                The candidate should explain how they meet the requirement (e.g., years of relevant 
+				experience, specific tools or contexts) and note any areas they still want to improve.
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- EXAMPLE TABLE -->
+        <section class="mt-4">
+          <div class="font-medium text-gray-900 mb-2">
+            <span class="text-ashley-orange">Example</span> – How to explain rating for the
+            <span class="text-ashley-orange">Job Qualifications</span>  Self-Assessment 
+          </div>
+          <p class="text-xs text-gray-700 mb-2">
+            This table uses the Team Leader of Product Engineering role as a sample to illustrate 
+			how a candidate may self-rate and explain their readiness.
+          </p>
+
           <div class="overflow-x-auto">
-            <table class="min-w-full text-sm bg-white border border-gray-200 rounded-lg">
-              <thead class="bg-gray-50 text-gray-600">
+            <table class="min-w-full text-xs bg-white border border-orange-300 rounded-lg table-fixed">
+              <thead class="bg-orange-200 text-gray-900">
                 <tr>
-                  <th class="px-3 py-2 text-left w-56">Field</th>
-                  <th class="px-3 py-2 text-left">Requirement Summary</th>
+                  <th class="px-3 py-2 text-left border-b border-orange-300 w-[10%]">Field</th>
+                  <th class="px-3 py-2 text-left border-b border-orange-300 w-[30%]">Requirement (Sample)</th>
+                  <th class="px-3 py-2 text-center border-b border-orange-300 w-[5%]">Self-Rating</th>
+                  <th class="px-3 py-2 text-left border-b border-orange-300 w-[55%]">Example Explanation (Candidate)</th>
                 </tr>
               </thead>
-              <tbody class="divide-y">
-                <tr>
-                  <td class="px-3 py-2 font-medium">Years of Experience</td>
-                  <td class="px-3 py-2">7–10 years of progressive HR experience, including at least 3 years in a supervisory role</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2 font-medium">Education</td>
-                  <td class="px-3 py-2">Bachelor’s in HR/Business or related; MBA preferred</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2 font-medium">Certifications</td>
-                  <td class="px-3 py-2">SHRM-CP/SHRM-SCP, CIPD Level 5/7, or equivalent HR certification (preferred)</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2 font-medium">Technical Knowledge</td>
-                  <td class="px-3 py-2">HRIS (SAP SuccessFactors, Workday), labor law compliance, performance mgmt, talent development frameworks</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2 font-medium">Language / Communication</td>
-                  <td class="px-3 py-2">Fluent in English &amp; Vietnamese; strong presentation, reporting, and cross-cultural communication</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2 font-medium">Other Requirements</td>
-                  <td class="px-3 py-2">Willing to travel across Asia sites; strong stakeholder management; multicultural experience</td>
-                </tr>
-              </tbody>
+		<tbody class="divide-y divide-orange-200">
+		
+		  <!-- Years of Experience Required -->
+		  <tr>
+		    <td class="px-3 py-2 font-medium align-center">Years of Experience Required</td>
+		    <td class="px-3 py-2 align-center">
+		      At least 5 years of experience in Engineering, Lean, or project management; furniture manufacturing background required; leadership experience required.
+		    </td>
+		    <td class="px-3 py-2 text-center align-center">
+		      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 text-[11px] font-semibold text-orange-800">
+		        2
+		      </span>
+		    </td>
+		    <td class="px-3 py-2 align-center">
+		      I have 4 years of experience in engineering and process improvement, mainly supporting manufacturing optimization projects. 
+		      I have coordinated small task groups but have not held a formal leadership role. I still need broader exposure to furniture manufacturing 
+		      and more structured people-leadership responsibilities.
+		    </td>
+		  </tr>
+		
+		  <!-- Educational Background -->
+		  <tr>
+		    <td class="px-3 py-2 font-medium align-center">Educational Background</td>
+		    <td class="px-3 py-2 align-center">
+		      College and above; major in Engineering, Lean, or Industrial Management.
+		    </td>
+		    <td class="px-3 py-2 text-center align-center">
+		      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 text-[11px] font-semibold text-orange-900">
+		        3
+		      </span>
+		    </td>
+		    <td class="px-3 py-2 align-center">
+		      I hold a Bachelor’s degree in Industrial Engineering. The major aligns directly with the role requirements, 
+		      and I regularly apply engineering concepts in process improvement and technical problem-solving.
+		    </td>
+		  </tr>
+		
+		  <!-- Certifications -->
+		  <tr>
+		    <td class="px-3 py-2 font-medium align-center">Certifications</td>
+		    <td class="px-3 py-2 align-center">
+		      Not specified in JD.
+		    </td>
+		    <td class="px-3 py-2 text-center align-center">
+		      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 text-[11px] font-semibold text-orange-900">
+		        3
+		      </span>
+		    </td>
+		    <td class="px-3 py-2 align-center">
+		      The role does not require specific certifications. I have completed internal courses on Lean, problem solving, and factory processes, 
+		      and I plan to pursue a Lean certification to further strengthen my technical foundation.
+		    </td>
+		  </tr>
+		
+		  <!-- Functional/Technical Knowledge -->
+		  <tr>
+		    <td class="px-3 py-2 font-medium align-center">Functional/Technical Knowledge</td>
+		    <td class="px-3 py-2 align-center">
+		      NEWGO process; PPR reviews; drawings evaluation; AIS, CTN, RPDF review; vendor communication; 
+		      PPR tracking; quality/process projects; AutoCAD; MS Office.
+		    </td>
+		    <td class="px-3 py-2 text-center align-center">
+		      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-300 bg-orange-50 text-[11px] font-semibold text-orange-800">
+		        2
+		      </span>
+		    </td>
+		    <td class="px-3 py-2 align-center">
+		      I have strong experience with AutoCAD, MS Office, and quality/process improvement projects. 
+		      However, I still need more hands-on practice with NEWGO, CTN/RPDF reviews, and independent drawing evaluation. 
+		      I am also developing deeper vendor communication skills for more technical discussions.
+		    </td>
+		  </tr>
+		
+		  <!-- Language/Communication Skills -->
+		  <tr>
+		    <td class="px-3 py-2 font-medium align-center">Language/ Communication Skills</td>
+		    <td class="px-3 py-2 align-center">
+		      Effective English communication skills.
+		    </td>
+		    <td class="px-3 py-2 text-center align-center">
+		      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 text-[11px] font-semibold text-orange-900">
+		        3
+		      </span>
+		    </td>
+		    <td class="px-3 py-2 align-center">
+		      I use English regularly when preparing reports and communicating with cross-functional teams. 
+		      I can explain technical issues clearly, though I continue to improve my fluency for discussions 
+		      with overseas suppliers and more complex topics.
+		    </td>
+		  </tr>
+		
+		  <!-- Other Role-Specific Requirements -->
+		  <tr>
+		    <td class="px-3 py-2 font-medium align-center">Other Role-Specific Requirements</td>
+		    <td class="px-3 py-2 align-center">
+		      Work under high demands; manage multiple tasks; empathy; factory environment; lifting up to 50 lbs; 
+		      bending/stooping; exposure to dirt, dust, chemicals, and noise.
+		    </td>
+		    <td class="px-3 py-2 text-center align-center">
+		      <span class="inline-flex items-center justify-center px-2 py-1 border border-orange-400 bg-orange-100 text-[11px] font-semibold text-orange-900">
+		        3
+		      </span>
+		    </td>
+		    <td class="px-3 py-2 align-center">
+		      I work daily on the production floor and am comfortable operating in a fast-paced, high-demand environment. 
+		      I manage multiple engineering tasks simultaneously and communicate with operators and supervisors with empathy. 
+		      I meet the physical requirements, including lifting and mobility in factory conditions.
+		    </td>
+		  </tr>
+		
+		</tbody>
+
             </table>
           </div>
-        </div>
+        </section>
 
-        <!-- Example Answer -->
-        <div class="rounded-lg border bg-white p-4">
-		<div class="font-medium text-sm text-gray-900 mb-1">
-            Example Answer – Candidate applying for <span class="text-ashley-orange font-semibold">HR Senior Team Leader</span>:
-          </div>
-          <p>
-            I have 6 years of HR experience, including 2 years in a supervisory role. I hold a Bachelor’s in Business Administration and recently started pursuing a SHRM-CP certification to strengthen my HR technical foundation. While I’ve gained practical experience in recruitment, employee relations, and performance management, I still need to build more exposure in HRIS systems and cross-country collaboration. I’m fluent in English and Vietnamese and currently supporting Asia-wide HR reporting, which helps me develop regional communication and stakeholder management skills.
-          </p>
-        </div>
-
-        <!-- Development note -->
-        <p class="mt-2 text-xs text-gray-600 italic">
-          🔸 <strong>Note:</strong> This example demonstrates a realistic self-assessment. 
-          Candidates should highlight both <strong>existing strengths</strong> and <strong>areas for growth</strong> 
-          to help identify meaningful development actions for future readiness.
+        <p class="text-xs text-gray-600 italic mt-3">
+          🔸 This self-assessment is for <strong>development planning only</strong> and does <strong>not</strong> guarantee promotion.
+          Please rate yourself honestly so that your HoD and AHR can design realistic development support and close the right gaps.
         </p>
 
       </div>
 
       <!-- Footer -->
       <div class="px-6 py-3 bg-gray-50 border-t flex justify-end">
-        <button class="inline-flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-1.5 rounded-lg"
+        <button class="inline-flex items-center gap-2 bg-gray-200 hover:bg-gray-300 
+                       text-gray-800 px-4 py-1.5 rounded-lg"
                 data-close="modalJQ">Close</button>
       </div>
+
     </div>
   </div>
 </div>
+
 
 
 <!-- ===== Scripts: open/close + toggle info ===== -->
