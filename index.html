@@ -1203,7 +1203,7 @@ setTimeout(tryRestoreDept, 0);
 
       setTimeout(() => {
         const to = 'anguyen@ashleyfurniture.com,ltrankhanh@ashleyfurniture.com, hphamhong@ashleyfurniture.com';
-		  const cc = 'AFenske@Ashleyfurniture.com'; 
+		const cc = 'AFenske@Ashleyfurniture.com'; 
         const subject = `CVRO – Critical Position Scoring (${deptName}, ${dateDisplay})`;
 
         // Soạn email body (plain text nhưng vẫn có “in đậm” giả lập)
@@ -1227,7 +1227,8 @@ const bodyPlain = bodyLines.join('\r\n');
 // Tạo mailto URL
 const mailto =
   `mailto:${encodeURIComponent(to)}`
-  + `?subject=${encodeURIComponent(subject)}`
+  + `?cc=${encodeURIComponent(cc)}`
+  + `&subject=${encodeURIComponent(subject)}`
   + `&body=${encodeURIComponent(bodyPlain)}`;
 
 window.location.href = mailto;
